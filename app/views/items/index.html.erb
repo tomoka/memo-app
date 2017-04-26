@@ -1,31 +1,46 @@
-<p id="notice"><%= notice %></p>
+<div class="ui container">
+	<div class="ui stackable equal width grid">
+		<div class="column">
+			<p id="notice"><%= notice %></p>
+			
+			<h1 class="ui header">メモ帳</h1>
+		
+			<button class="ui blue basic button">
+				<%= link_to 'New Item', new_item_path %>
+			</button>
 
-<h1>Items</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Plaice</th>
-      <th>Text</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @items.each do |item| %>
-      <tr>
-        <td><%= item.name %></td>
-        <td><%= item.plaice %></td>
-        <td><%= item.text %></td>
-        <td><%= link_to 'Show', item %></td>
-        <td><%= link_to 'Edit', edit_item_path(item) %></td>
-        <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Item', new_item_path %>
+			<div class="ui divider"></div>
+	
+			<div class="ui cards">
+			  <% @items.each do |item| %>
+			
+			  <div class="card">
+			    <div class="content">
+			      <div class="header">
+			        <p><%= item.name %></p>
+			      </div>
+				  <div class="ui divider"></div>
+			      <div class="meta">
+			        <div class="ui label">重要度<div class="detail">　<%= item.plaice %></div></div>
+			      </div>
+			      <div class="description">
+			      <!--
+			      <%= image_tag("S__28229640.jpg", :class => "right floated tiny ui image") %>
+			      -->
+			        <p><%= item.text %></p>
+			      </div>
+			    </div>
+			    <div class="extra content">
+			      <div class="ui three buttons">
+			        <div class="ui basic green button"><%= link_to '表示', item %></div>
+			        <div class="ui basic green button"><%= link_to '編集', edit_item_path(item) %></div>
+			        <div class="ui basic red button"><%= link_to '削除', item, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+			      </div>
+			    </div>
+			  </div>
+			  
+			  <% end %>
+			</div>
+		</div>
+	</div>
+</div>
